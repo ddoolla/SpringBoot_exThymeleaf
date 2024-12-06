@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout_default}" th:with="pageName='page-a'">
+    <!--
+        th:with 문을 추가하여 인수를 전달할 수 있다.
+        또란 layout:decorate 를 꼭 html 태그에 작성하지 않아도
+        적용할 레이아웃 템플릿의 루트 요소로 복사된다고 한다. (몇몇 오류가 발생한 사례가 있는 듯?)
+    -->
+<head>
+    <title>PAGE_A</title>
+
+    <!--
+        콘텐츠 페이지에서 추가한 요소는 레이아웃 템플릿의 모든 요소 뒤에 추가된다.
+        (찾아보니깐 link 와 script 를 정렬해주는 기능도 있다..)
+    -->
+    <link rel="stylesheet" th:href="@{/css/page_a.css}">
+    <script th:src="@{/js/page_a.js}"></script>
+</head>
+<body>
+    <!-- 레이아웃 프레그먼트 지정 외에는 적용되지 않습니다.-->
+    <section layout:fragment="content-1">
+        <div th:text="|페이지A 본문입니다.|"></div>
+    </section>
+    <!-- 레이아웃 프레그먼트 지정 외에는 적용되지 않습니다.-->
+</body>
+</html>
+

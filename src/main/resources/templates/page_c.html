@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{/layouts/layout_default}" th:with="pageName='page-c'">
+<head>
+    <meta charset="UTF-8">
+    <title>page-c</title>
+</head>
+<body>
+    <section layout:fragment="content-1">
+        <div layout:insert="~{/layouts/layout_module :: form-module('page-c')}">
+            <div layout:fragment="form-content">
+                page-c 커스텀 폼 입니다.
+            </div>
+        </div>
+    </section>
+
+    <section layout:fragment="content-2">
+        <div layout:replace="~{/layouts/layout_module :: list-module('page-c')}">
+            <div layout:fragment="list-content">
+                page-c 커스텀 리스트 입니다.
+            </div>
+        </div>
+    </section>
+
+    <!--
+        * layout:insert / layout:replace
+        - th:insert / th:replace 와 유사한 기능이지만 차이점은 layout:fragment 를 전달할 수 있다.
+
+        - 기본 레이아웃을 적용하여 콘텐츠 부분만 각 페이지별로 커스텀해서 사용한다.
+          그런데 모든 콘텐츠에 다 사용하진 않지만 자주 사용하는 양식들이 있을 수 있지 않나?
+          그럴 때 자주 사용하는 양식들을 모듈로 만들어 놓고 붙여 넣을 때 사용하면 편리한게 layout:insert, layout:replace 기능이다.
+    -->
+</body>
+</html>

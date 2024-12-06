@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>My Website</title> <!-- 레이아웃을 적용할 페이지의 제목으로 대체된다. -->
+    <!--
+        layout:title-pattern - 특수 토큰으로 패턴 지정 가능
+
+        $LAYOUT_TITLE - 레이아웃 템플릿의 제목
+        $CONTENT_TITLE - 레이아웃 적용할 콘텐츠 페이지의 제목
+
+        ex)
+            <title layout:title-pattern="$LAYOUT_TITLE - $CONTENT_TITLE"></title>
+    -->
+
+    <link rel="stylesheet" th:href="@{/css/default.css}"/>
+    <script th:src="@{/js/default.js}"></script>
+</head>
+<body>
+    <!--
+        3.5 버전 fragment expression ~{ 경로 :: 프레그먼트명 }
+
+        매개변수 정의X 프레그먼트 = ~{경로 :: 프레그먼트명}
+        매개변수 정의O 프레그먼트 = ~{경로 :: 프레그먼트명(인수1 [, ...])}
+
+        매개변수 정의O 프레그먼트, 태그 요소를 인수로 넘기는 방법 = ~{경로 :: 프레그먼트명( ~{ :: 요소 } [, ...])} // .클래스명도 가능
+        매개변수 정의O 프레그먼트, 전달할 인수가 없다면 = ~{경로 :: 프레그먼트명(~{})} 또는 ~{경로 :: 프레그먼트명(_)}
+
+        표현식이기에 3항 연산자 같은거 써서 프레그먼트 동적으로 사용하는 것도 가능
+        ex)
+            <div th:replace="${#authentication.principal.isAdmin()} ? ~{fragments/footer :: footer-admin} : ~{fragments/footer :: footer-admin}"></div>
+    -->
+
+    <div th:replace="~{fragments/header :: header(${pageName})}"></div>
+
+    <!-- 레이아웃을 적용할 페이지의 본문 영역 (조각 이름이 일치해야함) -->
+    <section layout:fragment="content-1">
+        레이아웃을 적용할 페이지에서 콘텐츠를 작성하지 않으면, <br/>
+        레이아웃 템플릿에 작성된 내용이 출력됩니다.
+    </section>
+    <br/>
+    <section layout:fragment="content-2">
+        레이아웃을 적용할 페이지에서 콘텐츠를 작성하지 않으면, <br/>
+        레이아웃 템플릿에 작성된 내용이 출력됩니다.
+    </section>
+
+    <div th:replace="~{fragments/footer :: footer}"></div>
+
+    <!--
+        th:insert 와 th:replace 의 차이
+
+        th:insert - 속성을 부여한 태그 하위에 조각 끼워넣기
+        th:replace - 속성을 부여한 태그부터 조각의 루트 요소 대체
+    -->
+</body>
+</html>
+

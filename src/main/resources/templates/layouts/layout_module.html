@@ -1,0 +1,27 @@
+<!DOCTYPE html >
+<html
+        xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+    <!-- 자주 쓰이는 폼 모듈 -->
+    <section layout:fragment="form-module(title)">
+        <h1>[[${title}]]</h1>
+        <div layout:fragment="form-content">
+            폼 모듈 콘텐츠 영역입니다.
+        </div>
+    </section>
+
+    <!-- 자주 쓰이는 리스트 모듈 -->
+    <section layout:fragment="list-module(title)">
+        <h1>[[${title}]]</h1>
+        <div layout:fragment="list-content">
+            리스트 모듈 콘텐츠 영역입니다.
+        </div>
+    </section>
+
+    <!-- 하나의 모듈 파일에 위에처럼 조각을 만들어 사용해도 되고 그냥 파일마다 만들어도 된다. -->
+</body>
+</html>

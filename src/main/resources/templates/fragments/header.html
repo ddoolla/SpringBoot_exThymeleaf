@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Header</title>
+</head>
+<body>
+    <!--
+        프래그먼트 정의
+        인수 필요 X = th:fragment="header"
+        인수 필요 O = th:fragment="header(param1 [, ...])"
+    -->
+    <header th:fragment="header(param1)">
+        <h1>Hello~, [[${param1}]]!</h1>
+    </header>
+</body>
+</html>
+
+
