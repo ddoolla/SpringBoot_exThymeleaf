@@ -16,3 +16,9 @@ spring.datasource.password=
 #JPA
 spring.jpa.open-in-view=false
 ```
+
+<br/>
+
+---
+#### [참조] [Thymeleaf Tutorial](https://www.thymeleaf.org/doc/tutorials/3.1/usingthymeleaf.html)
+#### [참조] [Thymeleaf Layout Dialect](https://ultraq.github.io/thymeleaf-layout-dialect/processors/)
